@@ -60,6 +60,10 @@ h1 { color: #d63384; margin-top: 40px; }
  font-size: 32px;
  margin-top: 20px;
 }
+/* 👇 required for runaway button */
+#noBtn {
+ position: relative;
+}
 </style>
 </head>
 <body>
@@ -81,8 +85,7 @@ h1 { color: #d63384; margin-top: 40px; }
 <div id="final" class="hidden">
 <h1>My Omoh, all that you picked tells me…</h1>
 <h2>Will you be my Valentine, my Omoh? 💕</h2>
-<!-- change/remove this image if you want -->
-<img src="Cute1.JPG" class="pic" alt="cute">
+<img src="Cute1.JPG" class="pic" alt="cute" id="mainPic">
 <br>
 <button class="button" id="yesBtn">Yes, Omoh 💖</button>
 <button class="button" id="noBtn">No 😢</button>
@@ -116,8 +119,10 @@ document.querySelectorAll('#step2 .choice').forEach(btn => {
 const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
 const reaction = document.getElementById('reaction');
+const meme = document.getElementById('meme');
+const mainPic = document.getElementById('mainPic');
 yesBtn.onclick = () => {
- const meme = document.getElementById('meme');
+ mainPic.classList.add('hidden');
  reaction.textContent = "💖 Yay! 🎉";
  meme.src = "meme1.png";
  meme.classList.remove('hidden');
@@ -125,11 +130,19 @@ yesBtn.onclick = () => {
  spawnHearts();
 };
 noBtn.onclick = () => {
- const meme = document.getElementById('meme');
+ mainPic.classList.add('hidden');
  reaction.textContent = "😢 Pick yes, please 🥺";
  meme.src = "ussoon.png";
  meme.classList.remove('hidden');
+ noBtn.disabled = true;
+ noBtn.textContent = "Okay okay 😭";
 };
+// 👇 Make NO run away
+noBtn.addEventListener('mouseenter', () => {
+ const x = Math.random() * 200 - 100;
+ const y = Math.random() * 200 - 100;
+ noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
 // Confetti
 function launchConfetti() {
  const canvas = document.getElementById('confetti');
@@ -175,5 +188,3 @@ function spawnHearts() {
 </script>
 </body>
 </html>
-
-
