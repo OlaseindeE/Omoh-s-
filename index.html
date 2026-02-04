@@ -82,9 +82,11 @@ h1 { color: #d63384; margin-top:50px; }
 <div id="final" class="hidden">
 <h1>My Omoh, All that picked by you tells me…</h1>
 <h2>Will you be my Valentine, My Omoh? 💕</h2>
+<img src="images/cute1.jpg" alt="cute" class="pic">
 <button class="button" id="yesBtn">Yes, Omoh 💖</button>
 <button class="button" id="noBtn">No 😢</button>
 <p id="reaction"></p>
+<img id="meme" class="pic hidden">
 </div>
 <canvas id="confetti"></canvas>
 <script>
@@ -114,19 +116,16 @@ const noBtn = document.getElementById('noBtn');
 const reaction = document.getElementById('reaction');
 
 yesBtn.onclick = ()=>{
-
-    reaction.textContent = "💖 Yay! 🎉";
-
-    launchConfetti();
-
-    spawnHearts();
-
+ reaction.textContent = "💖 Yay! 🎉";
+ document.getElementById('meme').src = "images/happy-meme.jpg";
+ document.getElementById('meme').classList.remove('hidden');
+ launchConfetti();
+ spawnHearts();
 }
-
 noBtn.onclick = ()=>{
-
-    reaction.textContent = "😢 Pick yes, please, omoh! 🥺";
-
+ reaction.textContent = "😢 Pick yes, please 🥺";
+ document.getElementById('meme').src = "images/sad-meme.jpg";
+ document.getElementById('meme').classList.remove('hidden');
 }
 
 // Confetti
@@ -211,4 +210,5 @@ function spawnHearts(){
 </script>
 </body>
 </html>
+
  
