@@ -115,18 +115,22 @@ const noBtn = document.getElementById('noBtn');
 
 const reaction = document.getElementById('reaction');
 
-yesBtn.onclick = ()=>{
- reaction.textContent = "💖 Yay! 🎉";
- document.getElementById('meme').src = "images/happy-meme.jpg";
- document.getElementById('meme').classList.remove('hidden');
- launchConfetti();
- spawnHearts();
-}
-noBtn.onclick = ()=>{
- reaction.textContent = "😢 Pick yes, please 🥺";
- document.getElementById('meme').src = "images/sad-meme.jpg";
- document.getElementById('meme').classList.remove('hidden');
-}
+const yesBtn = document.getElementById('yesBtn');
+ const noBtn = document.getElementById('noBtn');
+ const reaction = document.getElementById('reaction');
+ const meme = document.getElementById('meme');
+ yesBtn.onclick = () => {
+   reaction.textContent = "💖 Yay! 🎉";
+   meme.src = "happy-meme.jpg";
+   meme.classList.remove('hidden');
+   launchConfetti();
+   spawnHearts();
+ }
+ noBtn.onclick = () => {
+   reaction.textContent = "😢 Pick yes, please 🥺";
+   meme.src = "sad-meme.jpg";
+   meme.classList.remove('hidden');
+ }
 
 // Confetti
 
@@ -212,3 +216,4 @@ function spawnHearts(){
 </html>
 
  
+
